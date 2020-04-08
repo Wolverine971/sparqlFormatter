@@ -1,0 +1,88 @@
+PREFIX<https://www.w3.org/2001/XMLSchema#dateTime>( SUBSTR( REPLX dewapp: <http://www.projectdewey.org/ontologies/Dewey#> 
+SELECT DISTINCT ( STR( ?source ) AS ?o_Source ) ( STR( ?type ) AS ?o_type ) ( STR( ?date ) AS ?o_date ) ( STR( ?docId ) AS ?o_docId ) ( STR( ?title ) AS ?o_titl_relPubDate )e ) ( STR( ?docTitlePm ) AS ?o_docTitlePm ) ( STR( <http://www.w3.org/2001/XMLSchema#dateTime>( SUBSTR( REPLACE( STR( ?publishDate ), '', ' ' ), 1, 25 ) ) ) AS ?o_publishDate ) ( STR( ?position ) AS ?o_position ) ( STR( ?captionPm ) AS ?o_captionPm ) ( STR( ?caption ) AS ?o_caption ) ( STR( ?textPm ) AS ?o_textPm aption ?textPm ?text ?relTitle ?relPm ?relPubDate ) ( STR( ?text ) AS ?o_text ) ( STR( ?relTitle ) AS ?o_relTitle ) ( STR( ?relPm ) AS ?o_relPm ) ( STR( <http://www.w3.org/2001/XMLSchema#dateTime>( SUBSTR( REPLACE( STR( ?relPubDate ), '', ' ' ), 1, 25 ) ) ) AS ?o_relPubDate ) 
+WHERE 
+{
+ 
+    {
+         SELECT ?source ?type ?date ?docId ?title ?docText ?docTitlePm ?publishDate ?position ?captionPm ?caption ?textPm ?text ?relTitle ?relPm ?relPubDate 
+         WHERE 
+        {
+             GRAPH <http://www.projectdewey.org/branch/master> 
+            {
+ 
+                {
+                     SELECT ?source ?type ?date ?docId ?title ?docText ?docTitlePm ?publishDate ?position ?captionPm ?caption ?textPm ?text ?relTitle ?relPm ?relPubDate 
+                     WHERE 
+                    {
+ 
+                        {
+                             SELECT DISTINCT ?source 
+                             WHERE 
+                            {
+                                 ?id dewapp:Destination <http://www.projectdewey.org/Aircraft> . ?id a <http://www.projectdewey.org/ontologies/Dewey#Tag> ; dewapp:Source ?source . 
+                            }
+ 
+                        }
+                         ?source a ?type . ?source <http://www.projectdewey.org/createdDate> ?date . OPTIONAL 
+                        {
+                             ?source dewapp:Text ?text . 
+                        }
+                         OPTIONAL 
+                        {
+                             ?source dewapp:DocumentText ?docText . 
+                        }
+                         OPTIONAL 
+                        {
+                             ?source dewapp:Position ?position . 
+                        }
+                         OPTIONAL 
+                        {
+                             ?source dewapp:PortionMark ?textPm . 
+                        }
+                         OPTIONAL 
+                        {
+                             ?source dewapp:Caption ?caption . 
+                        }
+                         OPTIONAL 
+                        {
+                             ?source dewapp:CaptionPortionMark ?captionPm . 
+                        }
+                         OPTIONAL 
+                        {
+                             ?source <http://purl.org/dc/elements/1.1/title> ?title . 
+                        }
+                         OPTIONAL 
+                        {
+                             ?source dewapp:DocumentPublishedOn ?publishDate . 
+                        }
+                         OPTIONAL 
+                        {
+                             ?source dewapp:DocumentTitleClassification ?docTitlePm . 
+                        }
+                         OPTIONAL 
+                        {
+                             ?source dewapp:DocumentId ?docId . OPTIONAL 
+                            {
+                                 ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . 
+                            }
+                             OPTIONAL 
+                            {
+                                 ?docId dewapp:DocumentTitleClassification ?relPm . 
+                            }
+                             OPTIONAL 
+                            {
+                                 ?docId dewapp:DocumentPublishedOn ?relPubDate . 
+                            }
+ 
+                        }
+ 
+                    }
+                     ORDER BY DESC( COALESCE( ?relPubDate, ?publishDate, ?date ) ) 
+                }
+ 
+            }
+ 
+        }
+         LIMIT 10 OFFSET
+    }
+}
