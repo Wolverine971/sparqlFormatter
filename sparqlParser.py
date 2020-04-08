@@ -1,140 +1,108 @@
-example = '''PREFIX dewapp: <http://www.projectdewey.org/ontologies/Dewey#>
-SELECT ?count
-WHERE { { SELECT ?count
-WHERE { { SELECT ?count
-WHERE { { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
-WHERE { GRAPH <http://www.projectdewey.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitlePm ?publishDate ?position ?captionPm ?caption ?textPm ?text ?relTitle ?relPm ?relPubDate
-WHERE { { SELECT DISTINCT ?source
-WHERE { { ?id dewapp:Destination <http://www.projectdewey.org/Su57> . } UNION { ?id dewapp:Destination <http://www.projectdewey.org/AA10AlamoC> . }
-?id a <http://www.projectdewey.org/ontologies/Dewey#Tag> ;
-    dewapp:Source ?source . }
- }
-?source a ?type .
-?source a <http://www.projectdewey.org/ontologies/Dewey#DeweyParagraph> .
-?source <http://www.projectdewey.org/createdDate> ?date .
-OPTIONAL { ?source dewapp:Text ?text . }
-OPTIONAL { ?source dewapp:DocumentText ?docText . }
-OPTIONAL { ?source dewapp:Position ?position . }
-OPTIONAL { ?source dewapp:PortionMark ?textPm . }
-OPTIONAL { ?source dewapp:Caption ?caption . }
-OPTIONAL { ?source dewapp:CaptionPortionMark ?captionPm . }
-OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
-OPTIONAL { ?source dewapp:DocumentPublishedOn ?publishDate . }
-OPTIONAL { ?source dewapp:DocumentTitleClassification ?docTitlePm . }
-OPTIONAL { ?source dewapp:DocumentId ?docId .
-OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
-OPTIONAL { ?docId dewapp:DocumentTitleClassification ?relPm . }
-OPTIONAL { ?docId dewapp:DocumentPublishedOn ?relPubDate . } } }
- } } }
- } } UNION { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
-WHERE { GRAPH <http://www.projectdewey.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitlePm ?publishDate ?position ?captionPm ?caption ?textPm ?text ?relTitle ?relPm ?relPubDate
-WHERE { { SELECT DISTINCT ?source
-WHERE { { ?id dewapp:Destination <http://www.projectdewey.org/Su57> . } UNION { ?id dewapp:Destination <http://www.projectdewey.org/AA10AlamoC> . }
-?id a <http://www.projectdewey.org/ontologies/Dewey#Tag> ;
-    dewapp:Source ?source . }
- }
-?source a ?type .
-?source a <http://www.projectdewey.org/ontologies/Dewey#DeweyTable> .
-?source <http://www.projectdewey.org/createdDate> ?date .
-OPTIONAL { ?source dewapp:Text ?text . }
-OPTIONAL { ?source dewapp:DocumentText ?docText . }
-OPTIONAL { ?source dewapp:Position ?position . }
-OPTIONAL { ?source dewapp:PortionMark ?textPm . }
-OPTIONAL { ?source dewapp:Caption ?caption . }
-OPTIONAL { ?source dewapp:CaptionPortionMark ?captionPm . }
-OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
-OPTIONAL { ?source dewapp:DocumentPublishedOn ?publishDate . }
-OPTIONAL { ?source dewapp:DocumentTitleClassification ?docTitlePm . }
-OPTIONAL { ?source dewapp:DocumentId ?docId .
-OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
-OPTIONAL { ?docId dewapp:DocumentTitleClassification ?relPm . }
-OPTIONAL { ?docId dewapp:DocumentPublishedOn ?relPubDate . } } }
- } } }
- } } UNION { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
-WHERE { GRAPH <http://www.projectdewey.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitlePm ?publishDate ?position ?captionPm ?caption ?textPm ?text ?relTitle ?relPm ?relPubDate
-WHERE { { SELECT DISTINCT ?source
-WHERE { { ?id dewapp:Destination <http://www.projectdewey.org/Su57> . } UNION { ?id dewapp:Destination <http://www.projectdewey.org/AA10AlamoC> . }
-?id a <http://www.projectdewey.org/ontologies/Dewey#Tag> ;
-    dewapp:Source ?source . }
- }
-?source a ?type .
-?source a <http://www.projectdewey.org/ontologies/Dewey#DeweyImage> .
-?source <http://www.projectdewey.org/createdDate> ?date .
-OPTIONAL { ?source dewapp:Text ?text . }
-OPTIONAL { ?source dewapp:DocumentText ?docText . }
-OPTIONAL { ?source dewapp:Position ?position . }
-OPTIONAL { ?source dewapp:PortionMark ?textPm . }
-OPTIONAL { ?source dewapp:Caption ?caption . }
-OPTIONAL { ?source dewapp:CaptionPortionMark ?captionPm . }
-OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
-OPTIONAL { ?source dewapp:DocumentPublishedOn ?publishDate . }
-OPTIONAL { ?source dewapp:DocumentTitleClassification ?docTitlePm . }
-OPTIONAL { ?source dewapp:DocumentId ?docId .
-OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
-OPTIONAL { ?docId dewapp:DocumentTitleClassification ?relPm . }
-OPTIONAL { ?docId dewapp:DocumentPublishedOn ?relPubDate . } } }
- } } }
- } } UNION { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
-WHERE { GRAPH <http://www.projectdewey.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitlePm ?publishDate ?position ?captionPm ?caption ?textPm ?text ?relTitle ?relPm ?relPubDate
-WHERE { { SELECT DISTINCT ?source
-WHERE { { ?id dewapp:Destination <http://www.projectdewey.org/Su57> . } UNION { ?id dewapp:Destination <http://www.projectdewey.org/AA10AlamoC> . }
-?id a <http://www.projectdewey.org/ontologies/Dewey#Tag> ;
-    dewapp:Source ?source . }
- }
-?source a ?type .
-{ ?source a ?innerType .
-FILTER ( ?innerType = <http://www.projectdewey.org/ontologies/Dewey#AtomizedDocument> || ?innerType = <http://www.projectdewey.org/ontologies/Dewey#Document> ) }
-?source <http://www.projectdewey.org/createdDate> ?date .
-OPTIONAL { ?source dewapp:Text ?text . }
-OPTIONAL { ?source dewapp:DocumentText ?docText . }
-OPTIONAL { ?source dewapp:Position ?position . }
-OPTIONAL { ?source dewapp:PortionMark ?textPm . }
-OPTIONAL { ?source dewapp:Caption ?caption . }
-OPTIONAL { ?source dewapp:CaptionPortionMark ?captionPm . }
-OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
-OPTIONAL { ?source dewapp:DocumentPublishedOn ?publishDate . }
-OPTIONAL { ?source dewapp:DocumentTitleClassification ?docTitlePm . }
-OPTIONAL { ?source dewapp:DocumentId ?docId .
-OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
-OPTIONAL { ?docId dewapp:DocumentTitleClassification ?relPm . }
-OPTIONAL { ?docId dewapp:DocumentPublishedOn ?relPubDate . } } }
- } } }
- } } }
- } }
- } }'''
-
-
-example2 = '''PREFIX<https://www.w3.org/2001/XMLSchema#dateTime>( SUBSTR( REPLX dewapp: <http://www.projectdewey.org/ontologies/Dewey#>
-SELECT DISTINCT ( STR( ?source ) AS ?o_Source ) ( STR( ?type ) AS ?o_type ) ( STR( ?date ) AS ?o_date ) ( STR( ?docId ) AS ?o_docId ) ( STR( ?title ) AS ?o_titl_relPubDate )e ) ( STR( ?docTitlePm ) AS ?o_docTitlePm ) ( STR( <http://www.w3.org/2001/XMLSchema#dateTime>( SUBSTR( REPLACE( STR( ?publishDate ), '', ' ' ), 1, 25 ) )
-) AS ?o_publishDate ) ( STR( ?position ) AS ?o_position ) ( STR( ?captionPm ) AS ?o_captionPm ) ( STR( ?caption ) AS ?o_caption ) ( STR( ?textPm ) AS ?o_textPm aption ?textPm ?text ?relTitle ?relPm ?relPubDate
-) ( STR( ?text ) AS ?o_text ) ( STR( ?relTitle ) AS ?o_relTitle ) ( STR( ?relPm ) AS ?o_relPm ) ( STR( <http://www.w3.org/2001/XMLSchema#dateTime>( SUBSTR( REPLACE( STR( ?relPubDate ), '', ' ' ), 1, 25 ) ) ) AS ?o_relPubDate )
-WHERE { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitlePm ?publishDate ?position ?captionPm ?caption ?textPm ?text ?relTitle ?relPm ?relPubDate
-WHERE { GRAPH <http://www.projectdewey.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitlePm ?publishDate ?position ?captionPm ?caption ?textPm ?text ?relTitle ?relPm ?relPubDate
-WHERE { { SELECT DISTINCT ?source
-WHERE { ?id dewapp:Destination <http://www.projectdewey.org/Aircraft> .
-?id a <http://www.projectdewey.org/ontologies/Dewey#Tag> ;
-    dewapp:Source ?source . }
- }
-?source a ?type .
-?source <http://www.projectdewey.org/createdDate> ?date .
-OPTIONAL { ?source dewapp:Text ?text . }
-OPTIONAL { ?source dewapp:DocumentText ?docText . }
-OPTIONAL { ?source dewapp:Position ?position . }
-OPTIONAL { ?source dewapp:PortionMark ?textPm . }
-OPTIONAL { ?source dewapp:Caption ?caption . }
-OPTIONAL { ?source dewapp:CaptionPortionMark ?captionPm . }
-OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
-OPTIONAL { ?source dewapp:DocumentPublishedOn ?publishDate . }
-OPTIONAL { ?source dewapp:DocumentTitleClassification ?docTitlePm . }
-OPTIONAL { ?source dewapp:DocumentId ?docId .
-OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
-OPTIONAL { ?docId dewapp:DocumentTitleClassification ?relPm . }
-OPTIONAL { ?docId dewapp:DocumentPublishedOn ?relPubDate . } } }
-ORDER BY DESC( COALESCE( ?relPubDate, ?publishDate, ?date ) )
- } } }
-LIMIT 10
-OFFSET}}'''
-
+example = '''PREFIX testapp: <http://www.mypro.org/ontologies/Test#>
+    SELECT ?count
+    WHERE { { SELECT ?count
+    WHERE { { SELECT ?count
+    WHERE { { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
+    WHERE { GRAPH <http://www.mypro.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitleR ?publishDate ?position ?captionR ?caption ?textR ?text ?relTitle ?relR ?relPubDate
+    WHERE { { SELECT DISTINCT ?source
+    WHERE { { ?id testapp:Destination <http://www.mypro.org/testObj> . } UNION { ?id testapp:Destination <http://www.mypro.org/testobj> . }
+    ?id a <http://www.mypro.org/ontologies/Test#Tag> ;
+        testapp:Source ?source . }
+    }
+    ?source a ?type .
+    ?source a <http://www.mypro.org/ontologies/Test#TestRef> .
+    ?source <http://www.mypro.org/createdDate> ?date .
+    OPTIONAL { ?source testapp:Text ?text . }
+    OPTIONAL { ?source testapp:DocumentText ?docText . }
+    OPTIONAL { ?source testapp:Position ?position . }
+    OPTIONAL { ?source testapp:Ref ?textR . }
+    OPTIONAL { ?source testapp:Caption ?caption . }
+    OPTIONAL { ?source testapp:CaptionRef ?captionR . }
+    OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
+    OPTIONAL { ?source testapp:DocumentPublishedOn ?publishDate . }
+    OPTIONAL { ?source testapp:DocumentTitleClass ?docTitleR . }
+    OPTIONAL { ?source testapp:DocumentId ?docId .
+    OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
+    OPTIONAL { ?docId testapp:DocumentTitleClass ?relR . }
+    OPTIONAL { ?docId testapp:DocumentPublishedOn ?relPubDate . } } }
+    } } }
+    } } UNION { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
+    WHERE { GRAPH <http://www.mypro.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitleR ?publishDate ?position ?captionR ?caption ?textR ?text ?relTitle ?relR ?relPubDate
+    WHERE { { SELECT DISTINCT ?source
+    WHERE { { ?id testapp:Destination <http://www.mypro.org/testObj> . } UNION { ?id testapp:Destination <http://www.mypro.org/testobj> . }
+    ?id a <http://www.mypro.org/ontologies/Test#Tag> ;
+        testapp:Source ?source . }
+    }
+    ?source a ?type .
+    ?source a <http://www.mypro.org/ontologies/Test#TestTable> .
+    ?source <http://www.mypro.org/createdDate> ?date .
+    OPTIONAL { ?source testapp:Text ?text . }
+    OPTIONAL { ?source testapp:DocumentText ?docText . }
+    OPTIONAL { ?source testapp:Position ?position . }
+    OPTIONAL { ?source testapp:Ref ?textR . }
+    OPTIONAL { ?source testapp:Caption ?caption . }
+    OPTIONAL { ?source testapp:CaptionRef ?captionR . }
+    OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
+    OPTIONAL { ?source testapp:DocumentPublishedOn ?publishDate . }
+    OPTIONAL { ?source testapp:DocumentTitleClass ?docTitleR . }
+    OPTIONAL { ?source testapp:DocumentId ?docId .
+    OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
+    OPTIONAL { ?docId testapp:DocumentTitleClass ?relR . }
+    OPTIONAL { ?docId testapp:DocumentPublishedOn ?relPubDate . } } }
+    } } }
+    } } UNION { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
+    WHERE { GRAPH <http://www.mypro.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitleR ?publishDate ?position ?captionR ?caption ?textR ?text ?relTitle ?relR ?relPubDate
+    WHERE { { SELECT DISTINCT ?source
+    WHERE { { ?id testapp:Destination <http://www.mypro.org/testObj> . } UNION { ?id testapp:Destination <http://www.mypro.org/testobj> . }
+    ?id a <http://www.mypro.org/ontologies/Test#Tag> ;
+        testapp:Source ?source . }
+    }
+    ?source a ?type .
+    ?source a <http://www.mypro.org/ontologies/Test#TestImage> .
+    ?source <http://www.mypro.org/createdDate> ?date .
+    OPTIONAL { ?source testapp:Text ?text . }
+    OPTIONAL { ?source testapp:DocumentText ?docText . }
+    OPTIONAL { ?source testapp:Position ?position . }
+    OPTIONAL { ?source testapp:Ref ?textR . }
+    OPTIONAL { ?source testapp:Caption ?caption . }
+    OPTIONAL { ?source testapp:CaptionRef ?captionR . }
+    OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
+    OPTIONAL { ?source testapp:DocumentPublishedOn ?publishDate . }
+    OPTIONAL { ?source testapp:DocumentTitleClass ?docTitleR . }
+    OPTIONAL { ?source testapp:DocumentId ?docId .
+    OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
+    OPTIONAL { ?docId testapp:DocumentTitleClass ?relR . }
+    OPTIONAL { ?docId testapp:DocumentPublishedOn ?relPubDate . } } }
+    } } }
+    } } UNION { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
+    WHERE { GRAPH <http://www.mypro.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitleR ?publishDate ?position ?captionR ?caption ?textR ?text ?relTitle ?relR ?relPubDate
+    WHERE { { SELECT DISTINCT ?source
+    WHERE { { ?id testapp:Destination <http://www.mypro.org/testObj> . } UNION { ?id testapp:Destination <http://www.mypro.org/testobj> . }
+    ?id a <http://www.mypro.org/ontologies/Test#Tag> ;
+        testapp:Source ?source . }
+    }
+    ?source a ?type .
+    { ?source a ?innerType .
+    FILTER ( ?innerType = <http://www.mypro.org/ontologies/Test#testDocument> || ?innerType = <http://www.mypro.org/ontologies/Test#Document> ) }
+    ?source <http://www.mypro.org/createdDate> ?date .
+    OPTIONAL { ?source testapp:Text ?text . }
+    OPTIONAL { ?source testapp:DocumentText ?docText . }
+    OPTIONAL { ?source testapp:Position ?position . }
+    OPTIONAL { ?source testapp:Ref ?textR . }
+    OPTIONAL { ?source testapp:Caption ?caption . }
+    OPTIONAL { ?source testapp:CaptionRef ?captionR . }
+    OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
+    OPTIONAL { ?source testapp:DocumentPublishedOn ?publishDate . }
+    OPTIONAL { ?source testapp:DocumentTitleClass ?docTitleR . }
+    OPTIONAL { ?source testapp:DocumentId ?docId .
+    OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
+    OPTIONAL { ?docId testapp:DocumentTitleClass ?relR . }
+    OPTIONAL { ?docId testapp:DocumentPublishedOn ?relPubDate . } } }
+    } } }
+    } } }
+    } }
+    } }
+'''
 
 def addTabs(tabsC):
     tabs = ''
@@ -145,8 +113,6 @@ def addTabs(tabsC):
 
 def countBackTrack(text, start, end, target):
     count = ''
-    # if start == -1 or start == 0:
-    #     return ''
     select_pos = text.rfind(target, start, end)
     if start == 0 or select_pos == -1:
         return ''
@@ -265,7 +231,9 @@ def parse(text):
                 cleanTokens.append(t)
 
     parsedText = ''.join(cleanTokens)
-    replacedTxt = parsedText
+    replacedTxt = parsedText.replace('\n\n', '\n').replace(
+        '\n\n', '\n').replace('\n \n', '\n')
+    # replacedTxt = parsedText
 
     # indent first SELECT
     select_pos = replacedTxt.find('SELECT')
@@ -274,9 +242,9 @@ def parse(text):
     goodText = indentSpecialWords(replacedTxt)
     # w = create file or override file if file exists
     # x = create file
-    f = open('sparqlQuery.txt', 'w')
+    f = open('formattedSparql.txt', 'w')
     f.write(goodText)
 
 
 goodText = ''
-parse(example2)
+parse(example)

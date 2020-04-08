@@ -1,0 +1,104 @@
+PREFIX testapp: <http://www.mypro.org/ontologies/Test#>
+SELECT ?count
+WHERE { { SELECT ?count
+WHERE { { SELECT ?count
+WHERE { { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
+WHERE { GRAPH <http://www.mypro.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitleR ?publishDate ?position ?captionR ?caption ?textR ?text ?relTitle ?relR ?relPubDate
+WHERE { { SELECT DISTINCT ?source
+WHERE { { ?id testapp:Destination <http://www.mypro.org/testObj> . } UNION { ?id testapp:Destination <http://www.mypro.org/testobj> . }
+?id a <http://www.mypro.org/ontologies/Test#Tag> ;
+    testapp:Source ?source . }
+ }
+?source a ?type .
+?source a <http://www.mypro.org/ontologies/Test#TestRef> .
+?source <http://www.mypro.org/createdDate> ?date .
+OPTIONAL { ?source testapp:Text ?text . }
+OPTIONAL { ?source testapp:DocumentText ?docText . }
+OPTIONAL { ?source testapp:Position ?position . }
+OPTIONAL { ?source testapp:Ref ?textR . }
+OPTIONAL { ?source testapp:Caption ?caption . }
+OPTIONAL { ?source testapp:CaptionRef ?captionR . }
+OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
+OPTIONAL { ?source testapp:DocumentPublishedOn ?publishDate . }
+OPTIONAL { ?source testapp:DocumentTitleClass ?docTitleR . }
+OPTIONAL { ?source testapp:DocumentId ?docId .
+OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
+OPTIONAL { ?docId testapp:DocumentTitleClass ?relR . }
+OPTIONAL { ?docId testapp:DocumentPublishedOn ?relPubDate . } } }
+ } } }
+ } } UNION { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
+WHERE { GRAPH <http://www.mypro.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitleR ?publishDate ?position ?captionR ?caption ?textR ?text ?relTitle ?relR ?relPubDate
+WHERE { { SELECT DISTINCT ?source
+WHERE { { ?id testapp:Destination <http://www.mypro.org/testObj> . } UNION { ?id testapp:Destination <http://www.mypro.org/testobj> . }
+?id a <http://www.mypro.org/ontologies/Test#Tag> ;
+    testapp:Source ?source . }
+ }
+?source a ?type .
+?source a <http://www.mypro.org/ontologies/Test#TestTable> .
+?source <http://www.mypro.org/createdDate> ?date .
+OPTIONAL { ?source testapp:Text ?text . }
+OPTIONAL { ?source testapp:DocumentText ?docText . }
+OPTIONAL { ?source testapp:Position ?position . }
+OPTIONAL { ?source testapp:Ref ?textR . }
+OPTIONAL { ?source testapp:Caption ?caption . }
+OPTIONAL { ?source testapp:CaptionRef ?captionR . }
+OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
+OPTIONAL { ?source testapp:DocumentPublishedOn ?publishDate . }
+OPTIONAL { ?source testapp:DocumentTitleClass ?docTitleR . }
+OPTIONAL { ?source testapp:DocumentId ?docId .
+OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
+OPTIONAL { ?docId testapp:DocumentTitleClass ?relR . }
+OPTIONAL { ?docId testapp:DocumentPublishedOn ?relPubDate . } } }
+ } } }
+ } } UNION { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
+WHERE { GRAPH <http://www.mypro.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitleR ?publishDate ?position ?captionR ?caption ?textR ?text ?relTitle ?relR ?relPubDate
+WHERE { { SELECT DISTINCT ?source
+WHERE { { ?id testapp:Destination <http://www.mypro.org/testObj> . } UNION { ?id testapp:Destination <http://www.mypro.org/testobj> . }
+?id a <http://www.mypro.org/ontologies/Test#Tag> ;
+    testapp:Source ?source . }
+ }
+?source a ?type .
+?source a <http://www.mypro.org/ontologies/Test#TestImage> .
+?source <http://www.mypro.org/createdDate> ?date .
+OPTIONAL { ?source testapp:Text ?text . }
+OPTIONAL { ?source testapp:DocumentText ?docText . }
+OPTIONAL { ?source testapp:Position ?position . }
+OPTIONAL { ?source testapp:Ref ?textR . }
+OPTIONAL { ?source testapp:Caption ?caption . }
+OPTIONAL { ?source testapp:CaptionRef ?captionR . }
+OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
+OPTIONAL { ?source testapp:DocumentPublishedOn ?publishDate . }
+OPTIONAL { ?source testapp:DocumentTitleClass ?docTitleR . }
+OPTIONAL { ?source testapp:DocumentId ?docId .
+OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
+OPTIONAL { ?docId testapp:DocumentTitleClass ?relR . }
+OPTIONAL { ?docId testapp:DocumentPublishedOn ?relPubDate . } } }
+ } } }
+ } } UNION { { SELECT ( COUNT( DISTINCT ?source ) AS ?count )
+WHERE { GRAPH <http://www.mypro.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitleR ?publishDate ?position ?captionR ?caption ?textR ?text ?relTitle ?relR ?relPubDate
+WHERE { { SELECT DISTINCT ?source
+WHERE { { ?id testapp:Destination <http://www.mypro.org/testObj> . } UNION { ?id testapp:Destination <http://www.mypro.org/testobj> . }
+?id a <http://www.mypro.org/ontologies/Test#Tag> ;
+    testapp:Source ?source . }
+ }
+?source a ?type .
+{ ?source a ?innerType .
+FILTER ( ?innerType = <http://www.mypro.org/ontologies/Test#testDocument> || ?innerType = <http://www.mypro.org/ontologies/Test#Document> ) }
+?source <http://www.mypro.org/createdDate> ?date .
+OPTIONAL { ?source testapp:Text ?text . }
+OPTIONAL { ?source testapp:DocumentText ?docText . }
+OPTIONAL { ?source testapp:Position ?position . }
+OPTIONAL { ?source testapp:Ref ?textR . }
+OPTIONAL { ?source testapp:Caption ?caption . }
+OPTIONAL { ?source testapp:CaptionRef ?captionR . }
+OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
+OPTIONAL { ?source testapp:DocumentPublishedOn ?publishDate . }
+OPTIONAL { ?source testapp:DocumentTitleClass ?docTitleR . }
+OPTIONAL { ?source testapp:DocumentId ?docId .
+OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
+OPTIONAL { ?docId testapp:DocumentTitleClass ?relR . }
+OPTIONAL { ?docId testapp:DocumentPublishedOn ?relPubDate . } } }
+ } } }
+ } } }
+ } }
+ } }

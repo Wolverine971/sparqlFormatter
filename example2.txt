@@ -1,0 +1,30 @@
+PREFIX<https://www.w3.org/2001/XMLSchema#dateTime>( SUBSTR( REPLX testapp: <http://www.mypro.org/ontologies/test#>
+SELECT DISTINCT ( STR( ?source ) AS ?o_Source ) ( STR( ?type ) AS ?o_type ) ( STR( ?date ) AS ?o_date ) ( STR( ?docId ) AS ?o_docId ) ( STR( ?title ) AS ?o_titl_relPubDate )e ) ( STR( ?docTitleR ) AS ?o_docTitleR ) ( STR( <http://www.w3.org/2001/XMLSchema#dateTime>( SUBSTR( REPLACE( STR( ?publishDate ), '', ' ' ), 1, 25 ) )
+) AS ?o_publishDate ) ( STR( ?position ) AS ?o_position ) ( STR( ?captionR ) AS ?o_captionR ) ( STR( ?caption ) AS ?o_caption ) ( STR( ?textR ) AS ?o_textR aption ?textR ?text ?relTitle ?relR ?relPubDate
+) ( STR( ?text ) AS ?o_text ) ( STR( ?relTitle ) AS ?o_relTitle ) ( STR( ?relR ) AS ?o_relR ) ( STR( <http://www.w3.org/2001/XMLSchema#dateTime>( SUBSTR( REPLACE( STR( ?relPubDate ), '', ' ' ), 1, 25 ) ) ) AS ?o_relPubDate )
+WHERE { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitleR ?publishDate ?position ?captionR ?caption ?textR ?text ?relTitle ?relR ?relPubDate
+WHERE { GRAPH <http://www.mypro.org/branch/master> { { SELECT ?source ?type ?date ?docId ?title ?docText ?docTitleR ?publishDate ?position ?captionR ?caption ?textR ?text ?relTitle ?relR ?relPubDate
+WHERE { { SELECT DISTINCT ?source
+WHERE { ?id testapp:Destination <http://www.mypro.org/testObj1> .
+?id a <http://www.mypro.org/ontologies/test#Tag> ;
+    testapp:Source ?source . }
+ }
+?source a ?type .
+?source <http://www.mypro.org/createdDate> ?date .
+OPTIONAL { ?source testapp:Text ?text . }
+OPTIONAL { ?source testapp:DocumentText ?docText . }
+OPTIONAL { ?source testapp:Position ?position . }
+OPTIONAL { ?source testapp:Ref ?textR . }
+OPTIONAL { ?source testapp:Caption ?caption . }
+OPTIONAL { ?source testapp:CaptionRef ?captionR . }
+OPTIONAL { ?source <http://purl.org/dc/elements/1.1/title> ?title . }
+OPTIONAL { ?source testapp:DocumentPublishedOn ?publishDate . }
+OPTIONAL { ?source testapp:DocumentTitleClass ?docTitleR . }
+OPTIONAL { ?source testapp:DocumentId ?docId .
+OPTIONAL { ?docId <http://purl.org/dc/elements/1.1/title> ?relTitle . }
+OPTIONAL { ?docId testapp:DocumentTitleClass ?relR . }
+OPTIONAL { ?docId testapp:DocumentPublishedOn ?relPubDate . } } }
+ORDER BY DESC( COALESCE( ?relPubDate, ?publishDate, ?date ) )
+ } } }
+LIMIT 10
+OFFSET}}
