@@ -15,3 +15,4 @@ Sparql Examples
 - [one](example1.txt)
 - [two](./example2.txt)
 
+Formatted Example [formattedSparql.txt](formattedSparql.txt)
